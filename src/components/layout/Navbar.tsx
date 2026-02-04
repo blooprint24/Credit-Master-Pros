@@ -69,7 +69,11 @@ const Navbar = () => {
                         <Phone size={18} />
                         (800) 555-0199
                     </a>
-                    <Button variant="primary" size="sm" style={{ backgroundColor: 'var(--color-secondary)', color: 'white' }}>Client Login</Button>
+                    <a href="#contact" style={{ display: 'contents' }}>
+                        <Button variant="primary" size="sm" style={{ backgroundColor: 'var(--color-secondary)', color: 'white', borderColor: 'var(--color-secondary)' }}>
+                            Free Consultation
+                        </Button>
+                    </a>
                 </div>
 
                 {/* Mobile Toggle - Uses class from index.css */}
