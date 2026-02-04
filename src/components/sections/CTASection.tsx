@@ -16,9 +16,9 @@ const CTASection = () => {
                     <Button variant="secondary" size="lg">
                         Start Your Free Consultation <ArrowRight size={18} style={{ marginLeft: '8px' }} />
                     </Button>
-                    <a href="tel:+18001234567">
+                    <a href="tel:+16562661573">
                         <Button variant="outline" size="lg" style={{ borderColor: 'white', color: 'white' }}>
-                            (800) 555-0199
+                            (656) 266-1573
                         </Button>
                     </a>
                 </div>

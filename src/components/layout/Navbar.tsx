@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; // Force Rebuild 2026-02-03
 
 
 /* ... imports ... */
@@ -65,9 +65,9 @@ const Navbar = () => {
                             {link.name}
                         </a>
                     ))}
-                    <a href="tel:+18001234567" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, color: 'var(--color-secondary)' }}>
+                    <a href="tel:+16562661573" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, color: 'var(--color-secondary)' }}>
                         <Phone size={18} />
-                        (800) 555-0199
+                        (656) 266-1573
                     </a>
                     <a href="#contact" style={{ display: 'contents' }}>
                         <Button variant="primary" size="sm" style={{ backgroundColor: 'var(--color-secondary)', color: 'white', borderColor: 'var(--color-secondary)' }}>
@@ -117,11 +117,15 @@ const Navbar = () => {
                             </a>
                         ))}
                         <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)' }} />
-                        <a href="tel:+18001234567" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, color: 'white' }}>
+                        <a href="tel:+16562661573" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 600, color: 'white' }}>
                             <Phone size={18} />
-                            (800) 555-0199
+                            (656) 266-1573
                         </a>
-                        <Button variant="primary" style={{ width: '100%' }}>Client Login</Button>
+                        <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} style={{ display: 'contents' }}>
+                            <Button variant="primary" style={{ width: '100%', backgroundColor: 'var(--color-secondary)', borderColor: 'var(--color-secondary)' }}>
+                                Free Consultation
+                            </Button>
+                        </a>
                     </motion.div>
                 )}
             </AnimatePresence>

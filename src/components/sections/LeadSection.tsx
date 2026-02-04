@@ -55,7 +55,7 @@ const LeadSection = () => {
                                 </div>
                                 <div>
                                     <div style={{ fontWeight: 600 }}>Call Us Directly</div>
-                                    <div style={{ color: 'var(--color-text-muted)' }}>(800) 555-0199</div>
+                                    <div style={{ color: 'var(--color-text-muted)' }}>(656) 266-1573</div>
                                 </div>
                             </div>
 

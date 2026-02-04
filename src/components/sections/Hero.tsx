@@ -83,16 +83,32 @@ const Hero = () => {
                             <Button variant="outline" size="lg">How It Works</Button>
                         </div>
 
-                        <div style={{ marginTop: '3rem', display: 'flex', gap: '2rem', fontSize: '0.875rem', color: 'var(--color-text-muted)' }}>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <CheckCircle size={16} color="var(--color-success)" /> No Upfront Fees
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <CheckCircle size={16} color="var(--color-success)" /> Cancel Anytime
-                            </div>
-                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                <CheckCircle size={16} color="var(--color-success)" /> 90-Day Guarantee
-                            </div>
+                        <div style={{
+                            marginTop: '3.5rem',
+                            display: 'flex',
+                            gap: '1rem',
+                            flexWrap: 'wrap',
+                            fontSize: '0.875rem',
+                            color: 'var(--color-text-muted)'
+                        }}>
+                            {[
+                                { icon: <CheckCircle size={16} color="var(--color-success)" />, text: "No Upfront Fees" },
+                                { icon: <CheckCircle size={16} color="var(--color-success)" />, text: "Cancel Anytime" },
+                                { icon: <CheckCircle size={16} color="var(--color-success)" />, text: "90-Day Guarantee" }
+                            ].map((item, i) => (
+                                <div key={i} style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.5rem',
+                                    background: 'rgba(255, 255, 255, 0.7)',
+                                    padding: '0.4rem 0.8rem',
+                                    borderRadius: '2rem',
+                                    border: '1px solid var(--color-border)',
+                                    boxShadow: 'var(--shadow-sm)'
+                                }}>
+                                    {item.icon} {item.text}
+                                </div>
+                            ))}
                         </div>
                     </motion.div>
 
@@ -106,10 +122,11 @@ const Hero = () => {
                         <div style={{
                             background: 'var(--color-white)',
                             padding: '2rem',
-                            borderRadius: '1rem',
-                            boxShadow: 'var(--shadow-lg)',
+                            borderRadius: '1.5rem',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
                             position: 'relative',
-                            zIndex: 1
+                            zIndex: 1,
+                            border: '1px solid rgba(0, 0, 0, 0.05)'
                         }}>
                             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '2rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1rem' }}>
                                 <div>

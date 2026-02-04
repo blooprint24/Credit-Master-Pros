@@ -33,8 +33,7 @@ const Footer = () => {
                     <div>
                         <h4 style={{ color: 'white', fontSize: '1rem', marginBottom: '1.5rem' }}>Support</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                            <a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>Contact</a>
-                            <a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>Client Login</a>
+                            <a href="#contact" style={{ color: 'rgba(255,255,255,0.7)' }}>Consultation</a>
                             <a href="#" style={{ color: 'rgba(255,255,255,0.7)' }}>FAQ</a>
                         </div>
                     </div>
@@ -43,7 +42,7 @@ const Footer = () => {
                     <div>
                         <h4 style={{ color: 'white', fontSize: '1rem', marginBottom: '1.5rem' }}>Contact</h4>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem' }}>
-                            <p>(800) 555-0199</p>
+                            <a href="tel:+16562661573" style={{ color: 'inherit' }}>(656) 266-1573</a>
                             <p>support@creditmasterpros.com</p>
                             <p>123 Finance Way, Suite 100<br />New York, NY 10001</p>
                         </div>
