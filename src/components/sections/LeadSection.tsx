@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Phone, Mail } from 'lucide-react';
+import { Send, Phone, Mail, Loader2 } from 'lucide-react';
 import Button from '../ui/Button';
 
 const LeadSection = () => {
@@ -10,12 +10,46 @@ const LeadSection = () => {
         phone: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [submitMessage, setSubmitMessage] = useState('');
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        console.log('Form submitted:', formData);
-        alert('Thank you! Our experts will contact you shortly.');
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setIsSubmitting(true);
+        setSubmitStatus('idle');
+        setSubmitMessage('');
+
+        try {
+            const webhookUrl = import.meta.env.VITE_GHL_WEBHOOK_URL;
+            
+            if (!webhookUrl) {
+                console.warn('GHL Webhook URL is not set. Simulating submission.');
+                await new Promise(resolve => setTimeout(resolve, 1500));
+            } else {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to submit form.');
+                }
+            }
+
+            setSubmitStatus('success');
+            setSubmitMessage('Thank you! Our experts will contact you shortly.');
+            setFormData({ name: '', email: '', phone: '', message: '' });
+        } catch (error) {
+            console.error('Submission error:', error);
+            setSubmitStatus('error');
+            setSubmitMessage('Something went wrong. Please try again later or call us directly.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -179,9 +213,43 @@ const LeadSection = () => {
                                 />
                             </div>
 
-                            <Button variant="primary" size="lg" type="submit" style={{ width: '100%', backgroundColor: 'var(--color-secondary)', borderColor: 'var(--color-secondary)', marginTop: '1rem' }}>
-                                <Send size={18} style={{ marginRight: '8px' }} />
-                                Get My Free Consultation
+                            {submitStatus === 'success' && (
+                                <div style={{ padding: '1rem', background: '#dcfce3', color: '#166534', borderRadius: 'var(--radius-md)', border: '1px solid #bbf7d0', marginTop: '1rem' }}>
+                                    {submitMessage}
+                                </div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <div style={{ padding: '1rem', background: '#fee2e2', color: '#991b1b', borderRadius: 'var(--radius-md)', border: '1px solid #fecaca', marginTop: '1rem' }}>
+                                    {submitMessage}
+                                </div>
+                            )}
+
+                            <Button 
+                                variant="primary" 
+                                size="lg" 
+                                type="submit" 
+                                disabled={isSubmitting}
+                                style={{ 
+                                    width: '100%', 
+                                    backgroundColor: 'var(--color-secondary)', 
+                                    borderColor: 'var(--color-secondary)', 
+                                    marginTop: '1rem',
+                                    opacity: isSubmitting ? 0.7 : 1,
+                                    cursor: isSubmitting ? 'not-allowed' : 'pointer'
+                                }}
+                            >
+                                {isSubmitting ? (
+                                    <>
+                                        <Loader2 size={18} style={{ marginRight: '8px', animation: 'spin 1s linear infinite' }} />
+                                        Submitting...
+                                    </>
+                                ) : (
+                                    <>
+                                        <Send size={18} style={{ marginRight: '8px' }} />
+                                        Get My Free Consultation
+                                    </>
+                                )}
                             </Button>
                         </form>
                     </motion.div>
