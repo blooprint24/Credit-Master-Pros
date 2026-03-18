@@ -21,7 +21,6 @@
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-serif: 'Playfair Display', Georgia, serif;
 
-  --container-width: 1200px;
   --header-height: 140px;
 }
 
@@ -44,11 +43,13 @@ body {
   color: var(--color-text-main);
   line-height: 1.6;
   overflow-x: hidden;
-  width: 100%;
+  width: 100% !important;
+  min-width: 100%;
 }
 
 section {
   overflow: hidden;
+  width: 100%;
 }
 
 h1,
@@ -75,6 +76,47 @@ button {
 
 .text-center {
   text-align: center;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+/* Specific Grid Layouts */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.how-it-works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
+
+/* Responsive Utilities for older components */
+.desktop-menu {
+  display: none !important;
+}
+
+@media (min-width: 768px) {
+  .desktop-menu {
+    display: flex !important;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .mobile-toggle {
+    display: none !important;
+  }
 }
 
 /* Animations */
